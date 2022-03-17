@@ -1,8 +1,14 @@
+// Components
+
+import Landing from "./pages/Landing";
 
 
 function App() {
   return (
-    <h1>Hello World!</h1>
+    <div>
+      <h1>Job Finder</h1>
+      <Landing />
+    </div>
   );
 }
 
