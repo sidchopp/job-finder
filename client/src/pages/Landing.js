@@ -1,9 +1,10 @@
 import logo from '../assets/images/logo.svg';
 import main from '../assets/images/main.svg';
+import Wrapper from '../assets/wrappers/LandingPage';
 
 const Landing = () => {
   return (
-    <main>
+    <Wrapper>
       <nav >
         <img src={logo} alt="Job Finder" className='logo' />
       </nav>
@@ -23,7 +24,7 @@ const Landing = () => {
         {/* Image on right for big screens */}
         <img src={main} alt=" Job Finder" className='img main-img' />
       </div>
-    </main>
+    </Wrapper>
   )
 }
 export default Landing;
