@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Logo from '../components/Logo'
 import FormRow from '../components/FormRow'
 import Wrapper from '../assets/wrappers/RegisterPage'
+import Alert from '../components/Alert'
 // global context and useNavigate later
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   email: '',
   password: '',
   isMember: true,
+  showAlert: false,
 }
 // if possible prefer local state
 // global state
@@ -31,6 +33,9 @@ const Register = () => {
       <form className='form' onSubmit={onSubmit}>
         <Logo />
         <h3>Login</h3>
+
+        {/* Conditional rendering of Alert component */}
+        {values.showAlert && <Alert />}
 
         {/* name field */}
         <FormRow
