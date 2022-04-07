@@ -3,6 +3,7 @@ import Logo from '../components/Logo'
 import FormRow from '../components/FormRow'
 import Wrapper from '../assets/wrappers/RegisterPage'
 import Alert from '../components/Alert'
+import { useAppContext } from '../context/appContext'
 // global context and useNavigate later
 
 const initialState = {
@@ -10,13 +11,13 @@ const initialState = {
   email: '',
   password: '',
   isMember: true,
-  showAlert: false,
 }
 // if possible prefer local state
 // global state
 
 const Register = () => {
   const [values, setValues] = useState(initialState)
+  const { isLoading, showAlert } = useAppContext();
 
   // global context and useNavigate later
 
@@ -39,7 +40,7 @@ const Register = () => {
         <h3>{values.isMember ? "Login" : "Register"}</h3>
 
         {/* Conditional rendering of Alert component */}
-        {values.showAlert && <Alert />}
+        {showAlert && <Alert />}
 
         {/* name field is conditionally rendered */}
         {!values.isMember && (
