@@ -17,7 +17,7 @@ const initialState = {
 
 const Register = () => {
   const [values, setValues] = useState(initialState)
-  const { isLoading, showAlert } = useAppContext();
+  const { isLoading, showAlert, displayAlert } = useAppContext();
 
   // global context and useNavigate later
 
@@ -26,12 +26,18 @@ const Register = () => {
   }
 
   const handleChange = (e) => {
-    console.log(e.target)
+    //[] sq bracket notation to dynamically update the value a user fills
+    setValues({ ...values, [e.target.name]: e.target.value })
   }
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(e.target)
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      displayAlert();
+      return
+    }
+    console.log(values);
   }
   return (
     <Wrapper className='full-page'>
@@ -53,14 +59,14 @@ const Register = () => {
         )}
         {/* email field */}
         <FormRow
-          type='text'
+          type='email'
           value={values.email}
           name='email'
           handleChange={handleChange}
         />
         {/* password field */}
         <FormRow
-          type='text'
+          type='password'
           value={values.password}
           name='password'
           handleChange={handleChange}
